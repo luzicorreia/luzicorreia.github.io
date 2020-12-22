@@ -15,3 +15,4 @@ console.log(Math.trunc(area)); // arredonda o valor eliminando o valor decimal
 const random = Math.random();
 console.log(random);
 console.log(Math.round(random * 100));
+
