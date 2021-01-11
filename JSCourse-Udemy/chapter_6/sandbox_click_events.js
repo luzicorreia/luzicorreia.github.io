@@ -14,19 +14,25 @@ button.addEventListener('click', () => {
     ul.append(li);   // Metodo APPEND insere na ultima linha
     //ul.prepend(li);// Metodo APPEND insere na primeira linha
 });
-    
 
+//const items = document.querySelectorAll('li');
 
-
-const items = document.querySelectorAll('li');
-
-items.forEach(item => {
-    item.addEventListener('click', e => {
+//items.forEach(item => {
+  //  item.addEventListener('click', e => {
         //console.log('item clicked');
         //console.log(e);
         //console.log(e.target);
         //console.log(item);
-        e.target.style.textDecoration = 'line-through';
+        //e.target.style.textDecoration = 'line-through';
+        //console.log('event in LI');
+        //e.stopPropagation();
+        //e.target.remove();
+    //});
+//});
+
+ul.addEventListener('click', e => {
+    //console.log('event in UL');
+    if(e.target.tagName === 'LI'){
         e.target.remove();
-    });
+    }
 });
