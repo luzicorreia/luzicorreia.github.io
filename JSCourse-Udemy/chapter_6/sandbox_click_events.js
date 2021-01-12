@@ -25,14 +25,14 @@ button.addEventListener('click', () => {
         //console.log(item);
         //e.target.style.textDecoration = 'line-through';
         //console.log('event in LI');
-        //e.stopPropagation();
+        //e.stopPropagation();  // PARAR O EVENTO NESTE PONTO
         //e.target.remove();
     //});
 //});
 
-ul.addEventListener('click', e => {
+ul.addEventListener('click', e => {   //TRATA TODOS FILHOS (LI) DA LISTA (UL)
     //console.log('event in UL');
-    if(e.target.tagName === 'LI'){
+    if(e.target.tagName === 'LI'){   // REMOVER APENAS O EVENTO CLICADO(LI)
         e.target.remove();
     }
 });
