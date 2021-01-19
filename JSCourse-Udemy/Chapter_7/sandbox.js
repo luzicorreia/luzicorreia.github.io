@@ -44,8 +44,10 @@ if(usernamePattern.test(username)){
 form.username.addEventListener('keyup', e=> {
 //    console.log(e.target.value, form.username.value);
 if(usernamePattern.test(e.target.value)){
+    form.username.setAttribute('class', 'sucess');
     console.log('passed');
 }else {
+    form.username.setAttribute('class', 'error');
     console.log('failed');
 }
 })
