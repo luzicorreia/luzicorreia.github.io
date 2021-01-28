@@ -29,6 +29,17 @@ form.addEventListener("submit", (e) => {
   scrollTo(0, 0);
   result.querySelector("span").textContent = `${score}%`;
   result.classList.remove("d-none");
+
+  //SET INTERVAL 
+let output = 0;
+const timer = setInterval(() => {
+  result.querySelector("span").textContent = `${output}%`;
+  if(output === score){
+    clearInterval(timer);
+  } else {
+    output++;
+  }
+}, 10);
 });
 
 //WINDOW OBJECTS (global object)
@@ -42,3 +53,18 @@ form.addEventListener("submit", (e) => {
 //
 //    alert('Hello Ninjas!');
 //}, 3000);    // alerta window após 3 seguundos
+
+// SET INTERVAL -> Exibe conteudo ('hello') a cada 1 segundo 
+ //setInterval(() => {
+//  console.log('hello');
+//}, 1000);
+
+// SET INTERVAL -> Exibe conteudo ('hello') a cada 1 segundo e para (STOP) no quinto intervalo 
+//let i = 0;
+//const timer = setInterval(() => {
+//  console.log('hello');
+//  i++;
+//  if(i === 5){
+//    clearInterval(timer);
+//  }
+//}, 1000);
