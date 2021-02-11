@@ -37,17 +37,17 @@ const filterTodos = (term) => {
 //  console.log(Array.from(list.children));
 
   Array.from(list.children) 
-    .filter((todo) => !todo.textContent.includes(term))
+    .filter((todo) => !todo.textContent.toLowerCase().includes(term))
     .forEach((todo) => todo.classList.add('filtered'));
 
     Array.from(list.children) 
-    .filter((todo) => todo.textContent.includes(term))
+    .filter((todo) => todo.textContent.toLowerCase().includes(term))
     .forEach((todo) => todo.classList.remove('filtered'));
   };
 
 //KEYUP EVENT 
-search.addEventListener('keyup', () => {      // Evento
-  const term = search.value.trim();           // Metodo
-  filterTodos(term);                          // Função
+search.addEventListener('keyup', () => {            // Evento
+  const term = search.value.trim().toLowerCase();   // Metodo: excluir espaços da direita e esquerda e transformar conteudo em letra minuscula
+  filterTodos(term);                                // Função
 });
 
