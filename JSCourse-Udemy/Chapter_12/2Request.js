@@ -17,12 +17,39 @@ const getTodos = (resource, callback) => {
   request.send();
 };
 
-getTodos("todos/luigi.json", (err, data) => {
-  console.log(data);
-  getTodos("todos/mario.json", (err, data) => {
-    console.log(data);
-    getTodos("todos/shaun.json", (err, data) => {
-      console.log(data);
-    });
+//CALLBACK HELL - RESOURCE
+//getTodos("todos/luigi.json", (err, data) => {
+//  console.log(data);
+//  getTodos("todos/mario.json", (err, data) => {
+//    console.log(data);
+//    getTodos("todos/shaun.json", (err, data) => {
+//      console.log(data);
+//    });
+//  });
+//});
+
+//PROMISES BASICS
+const getSomething = () => {
+  return new Promise((resolve, reject) => {
+    //fetch something
+    //resolve('some data');
+    reject("some error");
   });
-});
+};
+
+//Promise WITHOUT catch when err
+getSomething().then(
+  (data) => {
+    console.log(data);
+  },
+  (err) => {
+    console.log(err);
+  }
+);
+
+//Promise WITH catch when err
+//getSomething().then(data => {
+//  console.log(data);
+//}).catch(err => {
+//  console.log(err);
+//});
