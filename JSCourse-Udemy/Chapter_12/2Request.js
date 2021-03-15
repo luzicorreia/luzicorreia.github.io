@@ -1,21 +1,29 @@
-const getTodos = (resource, callback) => {
-  const request = new XMLHttpRequest();
+const getTodos = (resource) => {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
 
-  request.addEventListener("readystatechange", () => {
-    //console.log(request, request.readyState)
-    if (request.readyState === 4 && request.status === 200) {
-      const data = JSON.parse(request.responseText); //transforma objeto JSON em objeto JS
-      callback(undefined, data);
-    } else if (request.readyState === 4) {
-      callback("could not fetch the data", undefined);
-    }
+    request.addEventListener("readystatechange", () => {
+      if (request.readyState === 4 && request.status === 200) {
+        const data = JSON.parse(request.responseText); //transforma objeto JSON em objeto JS
+        resolve(data);
+      } else if (request.readyState === 4) {
+        reject("error getting resouce");
+      }
+    });
+
+    //request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
+    //request.open("GET", 'todos.json');
+    request.open("GET", resource);
+    request.send();
   });
-
-  //request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
-  //request.open("GET", 'todos.json');
-  request.open("GET", resource);
-  request.send();
 };
+
+getTodos("todos/luigi.json").then(data => {
+ console.log('promise resolved:', data);
+}).catch(err => {
+  console.log('promise rejected:', err);
+});
+
 
 //CALLBACK HELL - RESOURCE
 //getTodos("todos/luigi.json", (err, data) => {
@@ -53,3 +61,6 @@ getSomething().then(
 //}).catch(err => {
 //  console.log(err);
 //});
+
+// .then: ok execution, show data
+// .catch: nok execution, show error message
