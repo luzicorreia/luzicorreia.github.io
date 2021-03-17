@@ -18,13 +18,26 @@ const getTodos = (resource) => {
   });
 };
 
+//CHAIN - promise together
 getTodos("todos/luigi.json").then(data => {
- console.log('promise resolved:', data);
+ console.log('promise 1 resolved:', data);
+ return getTodos('todos/mario.json');
+}).then(data => {
+ console.log('promise 2 resolved:', data);
+ return getTodos('todos/shaun.json');
+}).then(data => {
+ console.log('promise 3 resolved:', data);
 }).catch(err => {
   console.log('promise rejected:', err);
 });
 
+//getTodos("todos/luigi.json").then(data => {
+//  console.log('promise resolved:', data);
+// }).catch(err => {
+//   console.log('promise rejected:', err);
+// });
 
+ 
 //CALLBACK HELL - RESOURCE
 //getTodos("todos/luigi.json", (err, data) => {
 //  console.log(data);
@@ -37,23 +50,23 @@ getTodos("todos/luigi.json").then(data => {
 //});
 
 //PROMISES BASICS
-const getSomething = () => {
-  return new Promise((resolve, reject) => {
-    //fetch something
-    //resolve('some data');
-    reject("some error");
-  });
-};
+//const getSomething = () => {
+//  return new Promise((resolve, reject) => {
+//    //fetch something
+//    //resolve('some data');
+//    reject("some error");
+//  });
+//};
 
 //Promise WITHOUT catch when err
-getSomething().then(
-  (data) => {
-    console.log(data);
-  },
-  (err) => {
-    console.log(err);
-  }
-);
+//getSomething().then(
+//  (data) => {
+//    console.log(data);
+//  },
+//  (err) => {
+//    console.log(err);
+//  }
+//);
 
 //Promise WITH catch when err
 //getSomething().then(data => {
