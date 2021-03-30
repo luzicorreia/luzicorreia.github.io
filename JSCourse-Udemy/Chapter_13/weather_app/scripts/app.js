@@ -22,12 +22,21 @@ const updateUI = (data) => {
     `;
 
     //UPDATE THE NIGHT/DAY & ICON IMAGES
-    let timeSrc = null;
-    if(weather.IsDayTime) {
-        timeSrc = 'img/day.svg';
-    } else {
-        timeSrc = 'img/night.svg';
-    }
+    const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
+    icon.setAttribute('src', iconSrc);
+
+    //TERNARY OPERATOR - Otimizar condição
+    //const result = false ? 'value 1' : 'value 2';   //===> Sempre considera primeiro valor Verdadeiro e segundo valor Falso// 
+    //console.log(result);
+
+    //let timeSrc = null;
+    //if(weather.IsDayTime) {
+    //    timeSrc = 'img/day.svg';
+    //} else {
+    //    timeSrc = 'img/night.svg';
+    //}
+
+    let timeSrc = weather.IsDayTime ? 'img/day.svg' : 'img/night.svg' ;
     time.setAttribute('src', timeSrc);
 
     //REMOVE THE d-none CLASS IF PRESENT
@@ -56,3 +65,4 @@ cityForm.addEventListener('submit', e => {
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 });
+
