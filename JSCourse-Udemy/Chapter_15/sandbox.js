@@ -37,15 +37,46 @@ class User {
         //set up properties
         this.username = username;
         this.email = email;
+        this.score = 0;
+    }
+    login(){
+        console.log(`${this.username} just logged in`);
+        return this;
+    }
+    loggout(){
+        console.log(`${this.username} just logged out`);
+        return this;
+    }
+    incScore(){
+        this.score += 1;
+        console.log(`${this.username} has a score of ${this.score}`);
+        return this;
+    }
+}
+
+//CRIANDO SUBCLASSES PARA DETERMINADA FUNÇÃO DENTRO DA CLASSE PRINCIPAL
+class Admin extends User{
+    deleteUser(user){
+        users = users.filter(u => u.username != user.username);
     }
 }
 
 const userOne = new User('mario', 'mario@thenetninja.co.uk');
 const userTwo = new User('luigi', 'luigi@thenetninja.co.uk');
+const userThree = new Admin('shaun', 'shaun@thenetninja.co.uk');
 
-console.log(userOne, userTwo);
+let users = [userOne, userTwo, userThree];
+console.log(users);
+
+userThree.deleteUser(userTwo);
+console.log(users);
+
+//userOne.login().incScore().incScore().loggout();
+//userTwo.loggout();
 
 //THE 'NEW' keyword
 // 1-It creates a new object {}
 // 2-It binds the value of 'this' to the new empty object
 // 3-It calls the constructor function to 'build' the object
+//METHODO CHAINNING
+//1-Return this for chainning work (linha 61)
