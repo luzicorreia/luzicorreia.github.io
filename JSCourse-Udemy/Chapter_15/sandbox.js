@@ -72,6 +72,8 @@ const userOne = new User("mario", "mario@thenetninja.co.uk");
 const userTwo = new User("luigi", "luigi@thenetninja.co.uk");
 const userThree = new Admin("shaun", "shaun@thenetninja.co.uk");
 
+console.log(userOne);
+
 //let users = [userOne, userTwo, userThree];
 //console.log(users);
 
