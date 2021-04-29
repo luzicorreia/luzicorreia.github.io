@@ -28,7 +28,7 @@
 //console.log(userTwo.email, userTwo.username);
 //userTwo.login();
 
-//MULTIPLY OBJECT = DON'T WORK THIS WAY BECAUSE IT NECESSARY TO CREATE A CONSTRUCTOR + THIS
+//MULTIPLY OBJECT = DON'T WORK THIS WAY BECAUSE IT NECESSARY TO CREATE A CLASS USING CONSTRUCTOR + THIS
 //const userThree = new User('shaun@thenetninja.com.uk', 'shaun');
 
 //CORRET FORM TO USE MULTIPLY OBJECT: "constructor" and "this"
