@@ -12,18 +12,16 @@ const addRecipe = (recipe, id) => {
     `;
   list.innerHTML += html;
 };
-
-db.collection("recipes")
-  .get()
-  .then((snapshot) => {
-    //WHEN WE HAVE THE RESPONSE DATA
-    snapshot.docs.forEach((doc) => {
+///GET DOCUMENT IN REAL TIME - FIREBASE
+db.collection("recipes").onSnapshot((snapshot) => {
+  snapshot.docChanges().forEach((change) => {
+    const doc = change.doc;
+    if (change.type === "added") {
       addRecipe(doc.data(), doc.id);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
+    }
   });
+  console.log(snapshot.docChanges());
+});
 
 //ADD DOCUMENTS
 form.addEventListener("submit", (e) => {
