@@ -1,5 +1,6 @@
 const list = document.querySelector("ul");
 const form = document.querySelector("form");
+const button = document.querySelector("button");
 
 const addRecipe = (recipe, id) => {
   let time = recipe.created_at.toDate();
@@ -12,12 +13,24 @@ const addRecipe = (recipe, id) => {
     `;
   list.innerHTML += html;
 };
+
+const deleteRecipe = (id) => {
+  const recipes = document.querySelectorAll("li");
+  recipes.forEach((recipe) => {
+    if (recipe.getAttribute("data-id") === id) {
+      recipe.remove();
+    }
+  });
+};
+
 ///GET DOCUMENT IN REAL TIME - FIREBASE
-db.collection("recipes").onSnapshot((snapshot) => {
+const unsub = db.collection("recipes").onSnapshot((snapshot) => {
   snapshot.docChanges().forEach((change) => {
     const doc = change.doc;
     if (change.type === "added") {
       addRecipe(doc.data(), doc.id);
+    } else if (change.type === "removed") {
+      deleteRecipe(doc.id);
     }
   });
   console.log(snapshot.docChanges());
@@ -55,4 +68,10 @@ list.addEventListener("click", (e) => {
         console.log("recipe delete");
       });
   }
+});
+
+//UNSUB FROM DATEBASE CHANGES
+button.addEventListener("click", () => {
+  unsub();
+  console.log("unsubscribeed from collection changes");
 });
