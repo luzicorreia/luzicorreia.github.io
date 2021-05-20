@@ -81,7 +81,7 @@ console.log(userOne);
 //console.log(users);
 
 //userOne.login().incScore().incScore().loggout();
-//userTwo.loggout();
+userTwo.loggout();
 
 //THE 'NEW' keyword
 // 1-It creates a new object {}
