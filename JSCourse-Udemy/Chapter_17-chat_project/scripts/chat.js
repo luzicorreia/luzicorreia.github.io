@@ -55,11 +55,12 @@ chatroom.getChats((data) => {
   console.log(data);
 });
 
-setTimeout(() => {
-  chatroom.updateRoom('gaming');
-  chatroom.updateName('yoshi');
-  chatroom.getChats((data) => {
-    console.log(data);
-  });
-   chatroom.addChat('hello'); 
-}, 3000);
+//Visualizar a alteração após 3 segundos - teste
+//setTimeout(() => {
+//  chatroom.updateRoom('gaming');
+//  chatroom.updateName('yoshi');
+//  chatroom.getChats((data) => {
+//    console.log(data);
+//  });
+//   chatroom.addChat('hello'); 
+//}, 3000);
